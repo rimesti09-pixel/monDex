@@ -32,8 +32,8 @@ function renderGrid(data) {
         card.dataset.id = creature.id;
 
         card.innerHTML = `
-            <div class="relative flex h-36 items-center justify-center rounded-xl bg-brand-light overflow-hidden">
-                <img src="${creature.image}" alt="${creature.name}" class="h-full w-full object-contain p-2">
+            <div class="relative flex h-36 items-center justify-center rounded-xl bg-white overflow-hidden">
+                <img src="${creature.image}" alt="${creature.name}" class="h-full w- object-cover p-2">
                 <span class="absolute left-3 top-2 font-mono text-sm font-bold text-muted bg-white/80 px-2 py-0.5 rounded-md">${creature.id}</span>
             </div>
             <div class="flex items-center justify-between gap-2">
@@ -166,7 +166,7 @@ function updateTeamUI() {
         const item = document.createElement("div");
         item.className = "relative flex h-20 items-center justify-center rounded-xl border-2 border-line bg-white p-2 shadow-sm cursor-pointer group";
         item.innerHTML = `
-            <img src="${creature.image}" alt="${creature.name}" class="h-full w-full object-contain">
+            <img src="${creature.image}" alt="${creature.name}" class="h-full w-full object-cover p-2">
             <button class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition btn-remove" data-id="${creature.id}">✕</button>
         `;
         teamContainer.appendChild(item);

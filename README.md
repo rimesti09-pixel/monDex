@@ -1,44 +1,97 @@
-# Mon Dex — dépôt de départ
+DigiDex · Mon Univers Digimon
+​Un projet d'encyclopédie interactive (Dex) dédiée à l'univers Digimon, développé dans le cadre de la formation Simplon avec HTML5, Tailwind CSS et JavaScript (ES6+).
 
-Sprint 2 — Brief 1. Une page Tailwind **statique** à rendre interactive avec JavaScript, pour l'univers de votre choix : Pokémon, Digimon ou Yu-Gi-Oh!.
 
-Lisez le brief complet avant de commencer.
+​*** Liens du Projet
 
-## Installation
+​Dépôt GitHub : https://github.com/rimesti09-pixel/monDex
+​Projet en ligne (GitHub Pages) : https://rimesti09-pixel.github.io/monDex/
 
-Prérequis : [Node.js](https://nodejs.org) (version 18 ou plus).
 
-```bash
-npm install
-npm run dev
-```
 
-`npm run dev` surveille vos fichiers et régénère `dist/output.css` à chaque modification. Ouvrez ensuite `index.html` dans votre navigateur (ou avec l'extension Live Server).
+​**** Univers et Thème Visuel
 
-Avant de mettre en ligne sur GitHub Pages :
+​Univers choisi : Digimon
+​Types / Attributs : Vaccine, Data, Virus
+​Palette de couleurs :
+​Couleur principale (Brand) : Bleu (#0070F3)
+​Accentuation : Orange (#FF6B00)
+​Fond & Textes : Fond clair (#F8FAFC) et texte foncé (#0F172A)
 
-```bash
-npm run build
-```
 
-Puis committez `dist/output.css` : GitHub Pages ne lance pas Tailwind pour vous.
+​**** Source des Images et Crédits
 
-## Contenu du dépôt
+​Toutes les images des créatures utilisées dans ce projet proviennent de :
+​Digimon Wiki (Fandom / Wikimon) : https://digimon.fandom.com/
 
-| Fichier | Rôle |
-| --- | --- |
-| `index.html` | La page Dex, statique, avec 6 cartes écrites à la main |
-| `tailwind.config.js` | Le thème neutre à remplacer par celui de votre univers |
-| `src/input.css` | Les directives Tailwind et quelques classes de composants |
-| `dist/output.css` | Le CSS généré par Tailwind (ne pas modifier à la main) |
-| `data.js` | Le tableau `creatures`, à remplir avec au moins 12 créatures |
-| `script.js` | Votre JavaScript, avec la liste des fonctionnalités à coder |
-| `design/` | La maquette de la version finale |
 
-## À compléter par vous
+​***Fonctionnalités Réalisées
 
-- **Univers choisi :** [Pokémon / Digimon / Yu-Gi-Oh!]
-- **Lien GitHub Pages :** [lien]
-- **Sources des images :** [liens]
-- **Tests des expressions régulières :** [collez ici vos tests console : 2 valeurs valides et 2 invalides par expression]
-- **Bonus réalisés :** [liste]
+​Génération dynamique : La grille des créatures est générée automatiquement à partir du fichier data.js.
+​Consultation des détails : Affichage dynamique des statistiques (PV, Attaque, Défense) avec des barres de progression au clic sur n'importe quelle carte.
+​Recherche & Filtrage combinés :
+​Recherche par nom ou ID en temps réel.
+​Filtrage par type (Vaccine, Data, Virus, Tous).
+​Gestion de l'équipe ("Mon équipe") :
+​Ajout et suppression via la délégation d'événements (Event Delegation).
+​Limite maximale fixée à 6 créatures avec message d'alerte en cas de dépassement ou de doublon.
+​Formulaire d'ajout sécurisé : Validation stricte des données à l'aide d'expressions régulières (Regex) avec feedback visuel en temps réel.
+
+
+​**** Tests des Expressions Régulières (Regex)
+​Conformément aux exigences du brief, chaque champ du formulaire de création a été validé avec son expression régulière. Voici les tests d'au moins 2 valeurs valides et 2 valeurs invalides :
+
+   =>    ​1. Identifiant (ID)
+
+​Pattern : /^#\d{3}$/
+​Explication : Doit commencer par # suivi de exactement 3 chiffres.
+​Valeurs Valides :
+​#013 🟢 (Format correct)
+​#999 🟢 (Format correct)
+​Valeurs Invalides :
+​013 🔴 (Manque le symbole #)
+​#12 🔴 (Contient 2 chiffres au lieu de 3)
+
+=>    ​2. Nom (Name)
+
+​Pattern : /^[A-Za-zÀ-ÿ0-9][A-Za-zÀ-ÿ0-9 '.-]{1,29}$/
+​Explication : 2 à 30 caractères, lettres, chiffres, espaces, tirets et points autorisés.
+​Valeurs Valides :
+​Agumon 🟢 (Valide)
+​Greymon-X 🟢 (Valide)
+​Valeurs Invalides :
+​A 🔴 (Moins de 2 caractères)
+​<script> 🔴 (Symboles non autorisés)
+
+  =>    ​3. Statistiques (Stats : PV, Attaque, Défense)
+
+​Pattern : /^\d{1,3}$/
+​Explication : Nombre entier compris entre 0 et 999.
+​Valeurs Valides :
+​450 🟢 (Valide)
+​0 🟢 (Valide)
+​Valeurs Invalides :
+​1000 🔴 (Dépasse 3 chiffres)
+​-50 🔴 (Nombre négatif non autorisé)
+
+     =>       ​4. Lien de l'image (URL)
+
+​Pattern : /^https:\/\/\S+\.(png|jpe?g|webp|gif)$/i
+​Explication : URL sécurisée (HTTPS) se terminant par une extension d'image valide.
+​Valeurs Valides :
+​https://static.wikia.nocookie.net/digimon/agumon.png 🟢 (Valide)
+​https://site.com/image.jpg 🟢 (Valide)
+​Valeurs Invalides :
+​http://site.com/image.png 🔴 (HTTP au lieu de HTTPS)
+​https://site.com/document.pdf 🔴 (Extension non autorisée)
+
+    =>     ​5. Description
+
+​Pattern : /^[\s\S]{10,200}$/
+​Explication : Texte contenant entre 10 et 200 caractères.
+​Valeurs Valides :
+​Un Digimon Reptile de niveau Rookie. 🟢 (36 caractères)
+​Un grand dinosaure cracheur de feu. 🟢 (35 caractères)
+​Valeurs Invalides :
+​Court 🔴 (Moins de 10 caractères)
+🔴 (Trop long)
