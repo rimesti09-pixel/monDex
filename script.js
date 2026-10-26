@@ -1,7 +1,14 @@
 
-let equipe = [];
+let equipe = JSON.parse(localStorage.getItem("digiTeam")) || [];
 let currentFilter = "Tous";
 let currentSearch = "";
+const savedCustom = JSON.parse(localStorage.getItem("customCreatures")) || [];
+if (savedCustom.length > 0) {
+    savedCustom.forEach(c => {
+        if (!creatures.some(existing => existing.id === c.id)) {
+            creatures.push(c);}
+        });
+}
 let selectedCreature = creatures[0];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showDetail(creatures[0]);
     }
     updateTeamUI();
+;
 });
 
 function renderGrid(data) {
@@ -156,6 +164,7 @@ function removeFromTeam(id) {
 }
 
 function updateTeamUI() {
+    
     const teamContainer = document.querySelector("#team .grid");
     const counter = document.getElementById("team-slot-count");
     
@@ -178,6 +187,7 @@ function updateTeamUI() {
         emptySlot.className = "flex h-20 items-center justify-center rounded-xl border-2 border-dashed border-line bg-ground text-muted font-bold text-sm";
         emptySlot.textContent = "Vide";
         teamContainer.appendChild(emptySlot);
+        localStorage.setItem("digiTeam", JSON.stringify(equipe))
     }
 }
 
@@ -292,6 +302,9 @@ if (form) {
         };
 
         creatures.push(newCreature);
+        const savedCustom = JSON.parse(localStorage.getItem("customCreatures")) || [];
+        savedCustom.push(newCreature);
+        localStorage.setItem("customCreatures", JSON.stringify(savedCustom));
         filterAndSearch();
         form.reset();
         
