@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DigiDex · Mon Univers Digimon</title>
+  <link rel="stylesheet" href="./dist/output.css">
+</head>
+<body class="bg-muted font-body text-ink min-h-screen">
+
+  <!-- ===================== EN-TÊTE ===================== -->
+  <header class="bg-ink text-white">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-8 py-5">
+      <div class="flex items-center gap-3">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand">
+          <svg aria-hidden="true" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        </div>
+        <div>
+          <p class="font-display text-2xl font-extrabold leading-none">DigiDex</p>
+          <p class="text-sm text-gray-300">Digimon World · <span id="creature-count">12</span> créatures</p>
+        </div>
+      </div>
+      <nav aria-label="Navigation principale" class="flex flex-wrap items-center gap-2 w-full sm:w-auto ">
+        <a href="#grid" class="rounded-full bg-white/10 px-3 py-1.5 text-xs sm:text-sm hover:bg-white/20 transition">Créatures</a>
+        <a href="#team" class="rounded-full bg-white/10 px-3 py-1.5 text-xs sm:text-sm hover:bg-white/20 transition">Mon équipe · <span id="team-count">0</span>/6</a>
+        <a href="#create" class="rounded-full bg-accent px-3 py-1.5 text-xs sm:text-sm font-bold text-white hover:opacity-90 transition">+ Nouveau Digimon</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto flex max-w-7xl flex-col gap-8 px-8 py-8">
+
+    <!-- ===================== RECHERCHE ET FILTRES ===================== -->
+    <section aria-label="Recherche et filtres" class="flex flex-col gap-4">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <h1 class="font-display text-4xl font-extrabold">Trouver un Digimon</h1>
+        <label class="flex w-full max-w-md flex-col gap-1 text-sm font-bold">
+          Rechercher par nom
+          <input id="search" type="search" placeholder="ex. Agumon, Gabumon..." class="field font-normal rounded-xl border-2 border-line p-2.5 outline-none focus:border-brand">
+        </label>
+      </div>
+      
+      <!-- Filtres dyal Les Types Digimon (Vaccine, Data, Virus) -->
+      <div id="filters" role="group" aria-label="Filtrer par type" class="flex h-11 flex-nowrap gap-2 overflow-hidden">
+          <button type="button" class="chip bg-ink text-white border-ink shrink-0 px-4 py-2 rounded-full font-bold">Tous</button>
+          <button type="button" class="chip shrink-0 px-3 py-1.5 rounded-full border-2 border-line hover:border-brand transition">Vaccine</button>
+          <button type="button" class="chip shrink-0 px-3 py-1.5 rounded-full border-2 border-line hover:border-brand transition">Data</button>
+          <button type="button" class="chip shrink-0 px-3 py-1.5 rounded-full border-2 border-line hover:border-brand transition">Virus</button>
+      </div>
+    </section>
+
+    <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+      <!-- ===================== GRILLE DES 12 CRÉATURES ===================== -->
+      <section id="grid" aria-label="Créatures" class="grid w-full min-w-0 flex-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-items-center">
+        <!-- Carte 1 : Agumon -->
+        <article class="flex w-full max-w-md flex-col gap-3 rounded-card bg-white p-4 pb-5 shadow-sm border border-line">
+          <div class="relative flex h-36 items-center justify-center rounded-xl bg-brand-light overflow-hidden">
+            <img src="https://i.pinimg.com/736x/5d/c2/93/5dc2931de52baf5650cfca22f5774598.jpg" alt="Agumon" class="h-full w-full object-cover ">
+            <span class="absolute left-3 top-2 font-mono text-sm font-bold text-muted bg-red px-2 py-0.5 rounded-md">#001</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-display text-xl font-semibold">Agumon</h3>
+            <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">Vaccine</span>
+          </div>
+          <p class="text-sm text-muted">Rookie · Total 1320</p>
+          <button type="button" class="btn-outline border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition">Ajouter à l'équipe</button>
+        </article>
+
+        <!-- Carte 2 : Gabumon -->
+        <article class="flex w-full max-w-md flex-col gap-3 rounded-card bg-white p-4 pb-5 shadow-sm border border-line">
+          <div class="relative flex h-36 items-center justify-center rounded-xl bg-brand-light overflow-hidden">
+            <img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/3d/4e/a7/3d4ea79f-c8e6-a2d1-d44b-0d2fb16c7d73/0726449923976.jpg/1200x1200bf-60.jpg" alt="Gabumon" class="h-full w-full object-contain p-2">
+            <span class="absolute left-3 top-2 font-mono text-sm font-bold text-muted bg-white/80 px-2 py-0.5 rounded-md">#002</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-display text-xl font-semibold">Gabumon</h3>
+            <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">Data</span>
+          </div>
+          <p class="text-sm text-muted">Rookie · Total 1290</p>
+          <button type="button" class="btn-outline border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition">Ajouter à l'équipe</button>
+        </article>
+
+        <!-- Carte 3 : Guilmon -->
+        <article class="flex w-full max-w-md flex-col gap-3 rounded-card bg-white p-4 pb-5 shadow-sm border border-line">
+          <div class="relative flex h-36 items-center justify-center rounded-xl bg-brand-light overflow-hidden">
+            <img src="https://i.pinimg.com/736x/f7/5c/34/f75c34a604e4790af8383cc64774f489.jpg" alt="Guilmon" class="h-full w-full object-contain p-2">
+            <span class="absolute left-3 top-2 font-mono text-sm font-bold text-muted bg-white/80 px-2 py-0.5 rounded-md">#003</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-display text-xl font-semibold">Guilmon</h3>
+            <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">Virus</span>
+          </div>
+          <p class="text-sm text-muted">Rookie · Total 1330</p>
+          <button type="button" class="btn-outline border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition">Ajouter à l'équipe</button>
+        </article>
+
+        <!-- Carte 4 : Patamon -->
+        <article class="flex w-full max-w-md flex-col gap-3 rounded-card bg-white p-4 pb-5 shadow-sm border border-line">
+          <div class="relative flex h-36 items-center justify-center rounded-xl bg-brand-light overflow-hidden">
+            <img src="https://i.imgflip.com/5to5qi.jpg" alt="Patamon" class="h-full w-full object-contain p-2">
+            <span class="absolute left-3 top-2 font-mono text-sm font-bold text-muted bg-white/80 px-2 py-0.5 rounded-md">#004</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-display text-xl font-semibold">Patamon</h3>
+            <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">Data</span>
+          </div>
+          <p class="text-sm text-muted">Rookie · Total 1080</p>
+          <button type="button" class="btn-outline border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition">Ajouter à l'équipe</button>
+        </article>
+
+        <!-- Carte 5 : Greymon -->
+        <article class="flex w-full max-w-md flex-col gap-3 rounded-card bg-white p-4 pb-5 shadow-sm border border-line">
+          <div class="relative flex h-36 items-center justify-center rounded-xl bg-brand-light overflow-hidden">
+            <img src="https://digimon.net/cimages/digimon/greymon-first.jpg" alt="Greymon" class="h-full w-full object-contain p-2">
+            <span class="absolute left-3 top-2 font-mono text-sm font-bold text-muted bg-white/80 px-2 py-0.5 rounded-md">#005</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-display text-xl font-semibold">Greymon</h3>
+            <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">Vaccine</span>
+          </div>
+          <p class="text-sm text-muted">Champion · Total 2250</p>
+          <button type="button" class="btn-outline border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition">Ajouter à l'équipe</button>
+        </article>
+
+        <!-- Carte 6 : Garurumon -->
+        <article class="flex w-full max-w-md flex-col gap-3 rounded-card bg-white p-4 pb-5 shadow-sm border border-line">
+          <div class="relative flex h-36 items-center justify-center rounded-xl bg-brand-light overflow-hidden">
+            <img src="https://digimon.net/cimages/digimon/garurumon.jpg" alt="Garurumon" class="h-full w-full object-contain p-2">
+            <span class="absolute left-3 top-2 font-mono text-sm font-bold text-muted bg-white/80 px-2 py-0.5 rounded-md">#006</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-display text-xl font-semibold">Garurumon</h3>
+            <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">Vaccine</span>
+          </div>
+          <p class="text-sm text-muted">Champion · Total 2150</p>
+          <button type="button" class="btn-outline border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition">Ajouter à l'équipe</button>
+        </article>
+
+        <!-- Carte 7 : Angemon -->
+        <article class="flex w-full max-w-md flex-col gap-3 rounded-card bg-white p-4 pb-5 shadow-sm border border-line">
+          <div class="relative flex h-36 items-center justify-center rounded-xl bg-brand-light overflow-hidden">
+            <img src="https://digimon.net/cimages/digimon/angemon.jpg" alt="Angemon" class="h-full w-full object-contain p-2">
+            <span class="absolute left-3 top-2 font-mono text-sm font-bold text-muted bg-white/80 px-2 py-0.5 rounded-md">#007</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-display text-xl font-semibold">Angemon</h3>
+            <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">Vaccine</span>
+          </div>
+          <p class="text-sm text-muted">Champion · Total 2240</p>
+          <button type="button" class="btn-outline border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition">Ajouter à l'équipe</button>
+        </article>
+
+        <!-- Carte 8 : Devimon -->
+        <article class="flex w-full max-w-md flex-col gap-3 rounded-card bg-white p-4 pb-5 shadow-sm border border-line">
+          <div class="relative flex h-36 items-center justify-center rounded-xl bg-brand-light overflow-hidden">
+            <img src="https://digimon.net/cimages/digimon/devimon.jpg" alt="Devimon" class="h-full w-full object-contain p-2">
+            <span class="absolute left-3 top-2 font-mono text-sm font-bold text-muted bg-white/80 px-2 py-0.5 rounded-md">#008</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-display text-xl font-semibold">Devimon</h3>
+            <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">Virus</span>
+          </div>
+          <p class="text-sm text-muted">Champion · Total 2140</p>
+          <button type="button" class="btn-outline border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition">Ajouter à l'équipe</button>
+        </article>
+
+        <!-- Carte 9 : Renamon -->
+        <article class="flex w-full max-w-md flex-col gap-3 rounded-card bg-white p-4 pb-5 shadow-sm border border-line">
+          <div class="relative flex h-36 items-center justify-center rounded-xl bg-brand-light overflow-hidden">
+            <img src="https://wikimon.net/images/6/66/Renamon.gif" alt="Renamon" class="h-full w-full object-contain p-2">
+            <span class="absolute left-3 top-2 font-mono text-sm font-bold text-muted bg-white/80 px-2 py-0.5 rounded-md">#009</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-display text-xl font-semibold">Renamon</h3>
+            <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">Data</span>
+          </div>
+          <p class="text-sm text-muted">Rookie · Total 1280</p>
+          <button type="button" class="btn-outline border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition">Ajouter à l'équipe</button>
+        </article>
+
+        <!-- Carte 10 : Veemon -->
+        <article class="flex w-full max-w-md flex-col gap-3 rounded-card bg-white p-4 pb-5 shadow-sm border border-line">
+          <div class="relative flex h-36 items-center justify-center rounded-xl bg-brand-light overflow-hidden">
+            <img src="https://i.pinimg.com/736x/9d/b7/75/9db7756e33406db09a7f4954a2da26eb.jpg" alt="Veemon" class="h-full w-full object-contain p-2">
+            <span class="absolute left-3 top-2 font-mono text-sm font-bold text-muted bg-white/80 px-2 py-0.5 rounded-md">#010</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-display text-xl font-semibold">Veemon</h3>
+            <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">Vaccine</span>
+          </div>
+          <p class="text-sm text-muted">Rookie · Total 1310</p>
+          <button type="button" class="btn-outline border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition">Ajouter à l'équipe</button>
+        </article>
+
+        <!-- Carte 11 : Gatomon -->
+        <article class="flex w-full max-w-md flex-col gap-3 rounded-card bg-white p-4 pb-5 shadow-sm border border-line">
+          <div class="relative flex h-36 items-center justify-center rounded-xl bg-brand-light overflow-hidden">
+            <img src="https://i.pinimg.com/1200x/a3/54/c0/a354c0947ca5bcc25b8009be3367cacd.jpg" alt="Gatomon" class="h-full w-full object-contain p-2">
+            <span class="absolute left-3 top-2 font-mono text-sm font-bold text-muted bg-white/80 px-2 py-0.5 rounded-md">#011</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-display text-xl font-semibold">Gatomon</h3>
+            <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">Vaccine</span>
+          </div>
+          <p class="text-sm text-muted">Champion · Total 2080</p>
+          <button type="button" class="btn-outline border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition">Ajouter à l'équipe</button>
+        </article>
+
+        <!-- Carte 12 : Togemon -->
+        <article class="flex w-full max-w-md flex-col gap-3 rounded-card bg-white p-4 pb-5 shadow-sm border border-line">
+          <div class="relative flex h-36 items-center justify-center rounded-xl bg-brand-light overflow-hidden">
+            <img src="https://www.vhv.rs/dpng/d/302-3027038_digimon-togemon-hd-png-download.png" alt="Togemon" class="h-full w-full object-contain p-2">
+            <span class="absolute left-3 top-2 font-mono text-sm font-bold text-muted bg-white/80 px-2 py-0.5 rounded-md">#012</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="font-display text-xl font-semibold">Togemon</h3>
+            <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">Data</span>
+          </div>
+          <p class="text-sm text-muted">Champion · Total 2170</p>
+          <button type="button" class="btn-outline border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition">Ajouter à l'équipe</button>
+        </article>
+
+      </section>
+
+        <aside class="flex w-full lg:w-[420px] shrink-0 flex-col gap-6">
+
+      
+        <!-- ===================== PANNEAU DE DÉTAIL ===================== -->
+        <section id="detail" aria-label="Détail de la créature" class="flex flex-col gap-4 rounded-card border-2 border-ink bg-white p-6 shadow-md">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-sm text-muted">#001 · Détail</span>
+            <button type="button" aria-label="Fermer le détail" class="btn-outline w-11 h-11 border-2 border-line rounded-xl font-bold hover:bg-line transition">✕</button>
+          </div>
+          <div class="flex h-48 items-center justify-center rounded-2xl bg-brand-light p-4 overflow-hidden">
+            <img src="https://i.pinimg.com/736x/5d/c2/93/5dc2931de52baf5650cfca22f5774598.jpg" alt="Agumon" class="h-full w-full object-contain">
+          </div>
+          <div class="flex items-center justify-between">
+            <h2 class="font-display text-3xl font-extrabold">Agumon</h2>
+            <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">Vaccine</span>
+          </div>
+          <p class="text-gray-700">Un Digimon Reptile très populaire. Son attaque signature est Pepper Breath.</p>
+          <div class="flex flex-col gap-2 text-sm">
+            <div class="grid grid-cols-[80px_1fr_40px] items-center gap-2"><span class="font-bold">PV</span><span class="h-3 rounded-full bg-ground"><span class="block h-3 w-[45%] rounded-full bg-brand"></span></span><span class="text-right font-mono">450</span></div>
+            <div class="grid grid-cols-[80px_1fr_40px] items-center gap-2"><span class="font-bold">Attaque</span><span class="h-3 rounded-full bg-ground"><span class="block h-3 w-[52%] rounded-full bg-brand"></span></span><span class="text-right font-mono">520</span></div>
+            <div class="grid grid-cols-[80px_1fr_40px] items-center gap-2"><span class="font-bold">Défense</span><span class="h-3 rounded-full bg-ground"><span class="block h-3 w-[35%] rounded-full bg-brand"></span></span><span class="text-right font-mono">350</span></div>
+          </div>
+          <button type="button" class="btn-primary bg-accent text-white font-bold py-3 rounded-xl hover:opacity-90 transition">Ajouter à l'équipe</button>
+        </section>
+
+        <!-- ===================== MON ÉQUIPE ===================== -->
+        <section id="team" aria-label="Mon équipe" class="rounded-card bg-white p-6 border border-line shadow-sm flex flex-col gap-4">
+          <div class="flex items-center justify-between">
+            <h2 class="font-display text-2xl font-extrabold">Mon équipe</h2>
+            <span class="font-mono text-sm font-bold bg-brand-light px-3 py-1 rounded-full text-brand-dark"><span id="team-slot-count">0</span>/6</span>
+          </div>
+          
+          <div class="grid grid-cols-3 gap-3">
+            <div class="flex h-20 items-center justify-center rounded-xl border-2 border-dashed border-line bg-ground text-muted font-bold text-sm">Vide</div>
+            <div class="flex h-20 items-center justify-center rounded-xl border-2 border-dashed border-line bg-ground text-muted font-bold text-sm">Vide</div>
+            <div class="flex h-20 items-center justify-center rounded-xl border-2 border-dashed border-line bg-ground text-muted font-bold text-sm">Vide</div>
+            <div class="flex h-20 items-center justify-center rounded-xl border-2 border-dashed border-line bg-ground text-muted font-bold text-sm">Vide</div>
+            <div class="flex h-20 items-center justify-center rounded-xl border-2 border-dashed border-line bg-ground text-muted font-bold text-sm">Vide</div>
+            <div class="flex h-20 items-center justify-center rounded-xl border-2 border-dashed border-line bg-ground text-muted font-bold text-sm">Vide</div>
+          </div>
+          <p class="text-xs text-muted">Vous pouvez ajouter jusqu'à 6 Digimon dans votre équipe.</p>
+        </section>
+
+      </aside>
+    </div>
+
+    <!-- ===================== FORMULAIRE DE CRÉATION ===================== -->
+    <section id="create" aria-label="Nouvelle créature" class="flex flex-col gap-6 rounded-card bg-white p-8 border border-line shadow-sm">
+      <div>
+        <h2 class="font-display text-3xl font-extrabold">Nouveau Digimon</h2>
+        <p class="text-muted">Chaque champ est vérifié avant l'ajout du Digimon.</p>
+      </div>
+      <form id="creature-form" novalidate class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <label class="flex flex-col gap-1 text-sm font-bold">Numéro
+          <input name="id" type="text" placeholder="#013" class="field font-normal rounded-xl border-2 border-line p-2.5 outline-none focus:border-brand">
+          <span class="error-message text-sm font-normal text-muted"></span>
+        </label>
+        <label class="flex flex-col gap-1 text-sm font-bold">Nom
+          <input name="name" type="text" placeholder="ex. Veemon" class="field font-normal rounded-xl border-2 border-line p-2.5 outline-none focus:border-brand">
+          <span class="error-message text-sm font-normal text-muted"></span>
+        </label>
+        <label class="flex flex-col gap-1 text-sm font-bold">Type
+          <select name="type" class="field font-normal rounded-xl border-2 border-line p-2.5 outline-none focus:border-brand bg-white">
+            <option value="">Choisir un type</option>
+            <option>Vaccine</option>
+            <option>Data</option>
+            <option>Virus</option>
+          </select>
+          <span class="error-message text-sm font-normal text-muted"></span>
+        </label>
+        <label class="flex flex-col gap-1 text-sm font-bold">Niveau
+          <input name="level" type="text" placeholder="Rookie, Champion..." class="field font-normal rounded-xl border-2 border-line p-2.5 outline-none focus:border-brand">
+          <span class="error-message text-sm font-normal text-muted"></span>
+        </label>
+        <label class="flex flex-col gap-1 text-sm font-bold">PV (HP)
+          <input name="stat1" type="text" placeholder="0 à 999" class="field font-normal rounded-xl border-2 border-line p-2.5 outline-none focus:border-brand">
+          <span class="error-message text-sm font-normal text-muted"></span>
+        </label>
+        <label class="flex flex-col gap-1 text-sm font-bold">Attaque
+          <input name="stat2" type="text" placeholder="0 à 999" class="field font-normal rounded-xl border-2 border-line p-2.5 outline-none focus:border-brand">
+          <span class="error-message text-sm font-normal text-muted"></span>
+        </label>
+        <label class="flex flex-col gap-1 text-sm font-bold">Défense
+          <input name="stat3" type="text" placeholder="0 à 999" class="field font-normal rounded-xl border-2 border-line p-2.5 outline-none focus:border-brand">
+          <span class="error-message text-sm font-normal text-muted"></span>
+        </label>
+        <label class="flex flex-col gap-1 text-sm font-bold">Lien de l'image
+          <input name="image" type="text" placeholder="https://…/image.png" class="field font-normal rounded-xl border-2 border-line p-2.5 outline-none focus:border-brand">
+          <span class="error-message text-sm font-normal text-muted"></span>
+        </label>
+        <label class="flex flex-col gap-1 text-sm font-bold md:col-span-2 lg:col-span-4">Description
+          <textarea name="description" rows="3" placeholder="10 à 200 caractères" class="rounded-xl border-2 border-line p-3 font-normal outline-none focus:border-brand"></textarea>
+          <span class="error-message text-sm font-normal text-muted"></span>
+        </label>
+        <div class="flex flex-wrap justify-end gap-3 md:col-span-2 lg:col-span-4">
+          <button type="reset" class="btn-outline border-2 border-line px-6 py-2 rounded-xl font-bold hover:bg-line transition">Effacer</button>
+          <button type="submit" class="btn-primary bg-brand text-white px-6 py-2 rounded-xl font-bold hover:bg-brand-dark transition">Ajouter le Digimon</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="mx-auto max-w-7xl px-8 pb-10 text-sm text-muted">
+    Images : Digimon Official / Pinterest. Projet réalisé dans le cadre d'une formation.
+  </footer>
+  
+  <script src="./data.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
