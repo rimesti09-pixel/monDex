@@ -1,4 +1,3 @@
-
 const creatures = [
   {
     id: "#001",
@@ -6,7 +5,7 @@ const creatures = [
     type: "Vaccine",
     level: "Rookie",
     stats: { hp: 450, attack: 520, defence: 350 },
-    image: "https://i.pinimg.com/736x/5d/c2/93/5dc2931de52baf5650cfca22f5774598.jpg",
+    image: "https://static.wikia.nocookie.net/digimon/images/6/68/Agumon_b.jpg/revision/latest?cb=20170210150934",
     description: "Un Digimon Reptile très populaire. Son attaque signature est Pepper Breath."
   },
   {
@@ -15,7 +14,7 @@ const creatures = [
     type: "Data",
     level: "Rookie",
     stats: { hp: 420, attack: 480, defence: 390 },
-    image: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/3d/4e/a7/3d4ea79f-c8e6-a2d1-d44b-0d2fb16c7d73/0726449923976.jpg/1200x1200bf-60.jpg",
+    image: "https://static.wikia.nocookie.net/digimon/images/d/d1/Gabumon_b.jpg/revision/latest?cb=20171127121438",
     description: "Porte une fourrure pour se protéger du froid. Son attaque est Blue Blaster."
   },
   {
@@ -24,7 +23,7 @@ const creatures = [
     type: "Virus",
     level: "Rookie",
     stats: { hp: 460, attack: 550, defence: 320 },
-    image: "https://i.pinimg.com/736x/f7/5c/34/f75c34a604e4790af8383cc64774f489.jpg",
+    image: "https://static.wikia.nocookie.net/digimon/images/a/a1/Guilmon_b.jpg/revision/latest?cb=20130402191207",
     description: "Un Digimon Reptile avec un grand potentiel de combat et une marque Hazard."
   },
   {
@@ -33,7 +32,7 @@ const creatures = [
     type: "Data",
     level: "Rookie",
     stats: { hp: 380, attack: 400, defence: 300 },
-    image: "https://i.imgflip.com/5to5qi.jpg",
+    image: "https://static.wikia.nocookie.net/digimon/images/7/77/Patamon_b.jpg/revision/latest?cb=20150402010956",
     description: "Un Digimon Mammifère avec de grandes oreilles qui lui permettent de voler."
   },
   {
@@ -42,7 +41,7 @@ const creatures = [
     type: "Vaccine",
     level: "Champion",
     stats: { hp: 750, attack: 820, defence: 680 },
-    image: "https://digimon.net/cimages/digimon/greymon-first.jpg",
+    image: "https://static.wikia.nocookie.net/digimon/images/5/56/Greymon_b.jpg/revision/latest?cb=20170226001958",
     description: "Un Digimon Dinosaures extrêmement puissant au corps enveloppé de carapace."
   },
   {
@@ -51,7 +50,7 @@ const creatures = [
     type: "Vaccine",
     level: "Champion",
     stats: { hp: 710, attack: 790, defence: 650 },
-    image: "https://digimon.net/cimages/digimon/garurumon.jpg",
+    image: "https://static.wikia.nocookie.net/digimon/images/2/20/Garurumon_b.jpg/revision/latest?cb=20090205055228",
     description: "Un Digimon Loup couvert d'une fourrure bleue et blanche très dure."
   },
   {
@@ -60,7 +59,7 @@ const creatures = [
     type: "Vaccine",
     level: "Champion",
     stats: { hp: 730, attack: 810, defence: 700 },
-    image: "https://digimon.net/cimages/digimon/angemon.jpg",
+    image: "https://static.wikia.nocookie.net/digimon/images/0/08/Angemon_b.jpg/revision/latest?cb=20130402190032",
     description: "Un Digimon Ange aux six ailes blanches purement dévoué au bien."
   },
   {
@@ -69,7 +68,7 @@ const creatures = [
     type: "Virus",
     level: "Champion",
     stats: { hp: 700, attack: 830, defence: 610 },
-    image: "https://digimon.net/cimages/digimon/devimon.jpg",
+    image: "https://static.wikia.nocookie.net/digimon/images/9/9a/Devimon_b.jpg/revision/latest?cb=20130402183835",
     description: "Un Digimon Ange Déchu d'une grande cruauté avec un cœur ténébreux."
   },
   {
@@ -78,7 +77,7 @@ const creatures = [
     type: "Data",
     level: "Rookie",
     stats: { hp: 410, attack: 510, defence: 360 },
-    image: "https://wikimon.net/images/6/66/Renamon.gif",
+    image: "https://static.wikia.nocookie.net/digimon/images/f/f2/Renamon_b.jpg/revision/latest?cb=20130402190433",
     description: "Un Digimon Renard très agile et intelligent, expert en arts martiaux."
   },
   {
@@ -87,7 +86,7 @@ const creatures = [
     type: "Vaccine",
     level: "Rookie",
     stats: { hp: 440, attack: 500, defence: 370 },
-    image: "https://i.pinimg.com/736x/9d/b7/75/9db7756e33406db09a7f4954a2da26eb.jpg",
+    image: "https://static.wikia.nocookie.net/digimon/images/1/1b/Veemon_b.jpg/revision/latest?cb=20130402185900",
     description: "Un nouveau type de Digimon Dragon qui possède une grande énergie."
   },
   {
@@ -96,7 +95,7 @@ const creatures = [
     type: "Vaccine",
     level: "Champion",
     stats: { hp: 680, attack: 760, defence: 640 },
-    image: "https://i.pinimg.com/1200x/a3/54/c0/a354c0947ca5bcc25b8009be3367cacd.jpg",
+    image: "https://static.wikia.nocookie.net/digimon/images/7/7a/Gatomon_b.jpg/revision/latest?cb=20130402190852",
     description: "Un Digimon Chat de niveau Champion portant la griffes Święty."
   },
   {
@@ -105,7 +104,7 @@ const creatures = [
     type: "Data",
     level: "Champion",
     stats: { hp: 740, attack: 720, defence: 710 },
-    image: "https://www.vhv.rs/dpng/d/302-3027038_digimon-togemon-hd-png-download.png",
+    image: "https://static.wikia.nocookie.net/digimon/images/4/4d/Togemon_b.jpg/revision/latest?cb=20090205060244",
     description: "Un Digimon Cactus géant possédant des gants de boxe impressionnants."
   }
 ];
