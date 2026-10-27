@@ -34,7 +34,22 @@ function renderGrid(data) {
 
     data.forEach(creature => {
         const totalStats = creature.stats.hp + creature.stats.attack + creature.stats.defence;
+const inTeam = equipe.some(c => c.id === creature.id);
+    const isFull = equipe.length >= 6;
 
+    let btnClass = "btn-ajouter border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition";
+    let btnText = "Ajouter à l'équipe";
+    let disabledAttr = "";
+
+    if (inTeam) {
+        btnClass = "border-2 border-gray-300 py-2 rounded-xl font-bold bg-gray-100 text-gray-400 cursor-not-allowed";
+        btnText = "Déjà dans l'équipe";
+        disabledAttr = "disabled";
+    } else if (isFull) {
+        btnClass = "border-2 border-gray-300 py-2 rounded-xl font-bold bg-gray-100 text-gray-400 cursor-not-allowed";
+        btnText = "Équipe complète";
+        disabledAttr = "disabled";
+    }
         const card = document.createElement("article");
         card.className = "flex w-full max-w-md flex-col gap-3 rounded-card bg-white p-4 pb-5 shadow-sm border border-line cursor-pointer hover:shadow-md transition";
         card.dataset.id = creature.id;
@@ -49,7 +64,7 @@ function renderGrid(data) {
                 <span class="rounded-full bg-brand-light px-3 py-1 text-sm font-bold text-brand-dark">${creature.type}</span>
             </div>
             <p class="text-sm text-muted">${creature.level} · Total ${totalStats}</p>
-            <button type="button" class="btn-ajouter border-2 border-ink py-2 rounded-xl font-bold hover:bg-ink hover:text-white transition" data-id="${creature.id}">Ajouter à l'équipe</button>
+            <button type="button" class="${btnClass}" data-id="${creature.id}" ${disabledAttr}>${btnText}</button>
         `;
         grid.appendChild(card);
     });
